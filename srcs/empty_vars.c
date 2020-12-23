@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   empty_vars.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bshang <bshang@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: nalecto <nalecto@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 22:37:59 by nalecto           #+#    #+#             */
-/*   Updated: 2020/12/23 04:59:29 by bshang           ###   ########.fr       */
+/*   Updated: 2020/12/23 19:36:01 by nalecto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ int			cmd_out_of_vars(t_cmd *cmdlist, char **env, char **temp)
 	int		i;
 
 	new = NULL;
+	if (!cmdlist->cmdstr)
+		return (0);
 	run = cmdlist->cmdstr;
 	if (!ft_strchr(run, '$'))
 		return (0);

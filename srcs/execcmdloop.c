@@ -6,7 +6,7 @@
 /*   By: nalecto <nalecto@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 19:24:30 by nalecto           #+#    #+#             */
-/*   Updated: 2020/12/23 05:53:42 by nalecto          ###   ########.fr       */
+/*   Updated: 2020/12/23 19:44:35 by nalecto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ static int	notbuilt(t_cmd *cmdhead, t_cmd *cmdlist, char ***env, char ***temp)
 		calling_execve(cmdlist, *env, *temp);
 	else if (g_proc_status == 126)
 		return (0);
-	else if (cmd_out_of_vars(cmdlist, *env, *temp))
-		return (1);
 	else if (!set_cmd(&doublepass, cmdlist, env, temp))
 	{
 		if (stat(cmdlist->cmdstr, &buffer) != 0 && \
@@ -95,6 +93,8 @@ static int	ft_switch(t_cmd *cmdhead, t_cmd *cmdlist, char ***env, char ***temp)
 	int			doublepass;
 
 	doublepass = 0;
+	cmd_out_of_vars(cmdlist, *env, *temp);
+	cmdlist->cmdstr = parsecmdstr(cmdlist->cmdstr);
 	if (cmdlist->cmdstr == NULL)
 	{
 		empty_exec(cmdlist, env, temp);

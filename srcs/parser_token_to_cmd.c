@@ -6,7 +6,7 @@
 /*   By: nalecto <nalecto@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 19:13:15 by nalecto           #+#    #+#             */
-/*   Updated: 2020/12/23 18:30:27 by nalecto          ###   ########.fr       */
+/*   Updated: 2020/12/23 20:09:25 by nalecto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	parse_token(t_cmd **new, char **tokens, int *i)
 	{
 		if (*i == 0 || strequal(tokens[*i - 1], ";") || \
 		strequal(tokens[*i - 1], "|"))
-			(*new)->cmdstr = parsecmdstr(tokens[*i]);
+			(*new)->cmdstr = ft_strdup(tokens[*i]);
 		else
 			ft_lstadd_back(&(*new)->args, \
 			ft_lstnew(ft_strdup(tokens[*i]), 0));
